@@ -22,6 +22,7 @@
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm"/>
         <PackageReference Include="Duende.IdentityModel.OidcClient" />
+        <PackageReference Include="FluentAvaloniaUI" />
         <PackageReference Include="Material.Avalonia" />
         <PackageReference Include="Material.Avalonia.DataGrid" />
         <PackageReference Include="Material.Avalonia.Dialogs" />

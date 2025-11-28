@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Duende.IdentityModel.Jwk;
 using Duende.IdentityModel.OidcClient;
+using ProyectoPrimeraEvaluacionJuan.Data;
 using ProyectoPrimeraEvaluacionJuan.Models;
+using ProyectoPrimeraEvaluacionJuan.Utils;
 
 namespace ProyectoPrimeraEvaluacionJuan.Services;
 

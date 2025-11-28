@@ -16,4 +16,7 @@ public class PetardoModel
     [JsonProperty("potencia")]
     public int potencia { get; set; }
     
+    [JsonProperty("fechaCreacion")]
+    public int fechaCreacion { get; set; }
+    
 }

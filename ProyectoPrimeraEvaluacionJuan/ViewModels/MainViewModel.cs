@@ -31,6 +31,6 @@ public partial class MainViewModel : ViewModelBase
     {
         var authservice = new GoogleAuthService();
         Usuario usuario = await authservice.LoginAsync(new Usuario());
-        ImageURL = usuario.ImageUrl;
+        ImageUrl = usuario.ImageUrl;
     }
 }

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:p1="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:fa="using:FluentAvalonia.UI.Controls"
              xmlns:vm="clr-namespace:ProyectoPrimeraEvaluacionJuan.ViewModels"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -21,27 +22,32 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Image asyncImageLoader:ImageLoader.Source="{Binding imageUrl}"></Image>
+                        <Image asyncImageLoader:ImageLoader.Source="{Binding ImageUrl}"></Image>
                         <TextBlock Text="{Binding Nombre}"></TextBlock>
                         <TextBlock Text="{Binding Email}"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Login/Registro"
-                Command="{Binding LoginUsuarioCommand}">
-            <avalonia:MaterialIcon Kind="Google"></avalonia:MaterialIcon>
+        <Button Command="{Binding LoginUsuarioCommand}">
+            <StackPanel>
+                <avalonia:MaterialIcon Kind="Google"/>
+                <TextBox Text="Login/Registro" TextAlignment="Center"></TextBox>
+            </StackPanel>
+            
         </Button>
+        
+        <Grid>
+            <fa:NavigationView PaneDisplayMode="Left" 
+                               SelectedItem="{Binding NavigationService.SelectedMenuItem}"
+                               MenuItemsSource="{Binding NavigationService.MenuItems}">
+                <ContentControl Content="{Binding NavigationService.CurrentView}"/>
+            </fa:NavigationView>
+        
+        </Grid>
     </StackPanel>
-    <fa:NavigationView PaneDisplayMode="Left" 
-                       SelectedItem="{Binding NavigationService.SelectedMenuItem}"
-                       MenuItemsSource="{Binding NavigationService.MenuItems}">
-        <!-- <fa:NavigationView.MenuItems> -->
-        <!--     <fa:NavigationViewItem Content="Inicio" IconSource="Home"/> -->
-        <!--     <fa:NavigationViewItem Content="Productos" IconSource="Shop"/> -->
-        <!-- </fa:NavigationView.MenuItems> -->
-        <ContentControl Content="{Binding NavigationService.CurrentView}"/>
-    </fa:NavigationView>
+    
+    
    
     
 
