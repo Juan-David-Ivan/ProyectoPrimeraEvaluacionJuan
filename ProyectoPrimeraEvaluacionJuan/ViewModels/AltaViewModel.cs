@@ -3,24 +3,24 @@ using ProyectoPrimeraEvaluacionJuan.Services;
 
 namespace ProyectoPrimeraEvaluacionJuan.ViewModels;
 
-public partial class InicioViewModel: ViewModelBase
+public partial class AltaViewModel : ViewModelBase
 {
     private NavigationService navigationService;
 
-    public InicioViewModel(NavigationService navigationService)
+    public AltaViewModel(NavigationService navigationService)
     {
         this.navigationService = navigationService;
     }
 
-    public InicioViewModel()
+    public AltaViewModel()
     {
         
     }
     
     [RelayCommand]
-    public void IrAAlta()
+    public void IrAInicio()
     {
-        navigationService.NavigateTo(NavigationService.ALTA_VIEW);
+        navigationService.NavigateTo(NavigationService.INICIO_VIEW);
     }
     
     [RelayCommand]

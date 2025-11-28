@@ -35,6 +35,15 @@
         <Button Content="Registrar con Google"
                 Command="{Binding RegisterUserCommand}"></Button>
         
+        <fa:NavigationView PaneDisplayMode="Left" 
+                           SelectedItem="{Binding NavigationService.SelectedMenuItem}"
+                           MenuItemsSource="{Binding NavigationService.MenuItems}">
+            <!-- <fa:NavigationView.MenuItems> -->
+            <!--     <fa:NavigationViewItem Content="Inicio" IconSource="Home"/> -->
+            <!--     <fa:NavigationViewItem Content="Productos" IconSource="Shop"/> -->
+            <!-- </fa:NavigationView.MenuItems> -->
+            <ContentControl Content="{Binding NavigationService.CurrentView}"/>
+        </fa:NavigationView>
         
     </StackPanel>
     

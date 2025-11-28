@@ -7,8 +7,8 @@ public class PetardoModel
     [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
     public string Id { get; set; }
     
-    [JsonProperty("codigo")]
-    public string Codigo { get; set; }
+    [JsonProperty("peligroso")]
+    public bool peligroso { get; set; }
     
     [JsonProperty("tipo")]
     public string Tipo { get; set; }
@@ -16,7 +16,7 @@ public class PetardoModel
     [JsonProperty("potencia")]
     public int potencia { get; set; }
     
-    [JsonProperty("fechaCreacion")]
-    public int fechaCreacion { get; set; }
+    [JsonProperty("fechaEnvio")]
+    public int fechaEnvio { get; set; }
     
 }
