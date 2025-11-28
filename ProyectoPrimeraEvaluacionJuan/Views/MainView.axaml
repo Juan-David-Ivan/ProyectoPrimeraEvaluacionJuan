@@ -18,7 +18,7 @@
     
     <StackPanel HorizontalAlignment="Center">
         <TextBlock Text="Últimos registros"></TextBlock>
-        <ListBox ItemsSource="{Binding ListaUsuarios}" Width="200" Height="200">
+        <ListBox ItemsSource="{Binding ListaUsuarios}" Width="200" Height="200" Name="ListBoxUsuarios">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -29,22 +29,13 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Command="{Binding LoginUsuarioCommand}">
-            <StackPanel>
-                <avalonia:MaterialIcon Kind="Google"/>
-                <TextBox Text="Login/Registro" TextAlignment="Center"></TextBox>
-            </StackPanel>
-            
-        </Button>
+        <Button Content="Login"
+                Command="{Binding LoginUsuarioCommand}"
+                CommandParameter="{Binding ElementName= ListBoxUsuarios, Path=SelectedItem}"></Button>
+        <Button Content="Registrar con Google"
+                Command="{Binding RegisterUserCommand}"></Button>
         
-        <Grid>
-            <fa:NavigationView PaneDisplayMode="Left" 
-                               SelectedItem="{Binding NavigationService.SelectedMenuItem}"
-                               MenuItemsSource="{Binding NavigationService.MenuItems}">
-                <ContentControl Content="{Binding NavigationService.CurrentView}"/>
-            </fa:NavigationView>
         
-        </Grid>
     </StackPanel>
     
     

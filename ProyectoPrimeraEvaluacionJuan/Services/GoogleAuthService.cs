@@ -80,8 +80,8 @@ public class GoogleAuthService
         var options = new OidcClientOptions
         {
             Authority = "https://accounts.google.com",
-            ClientId = "CLIENT-ID",
-            ClientSecret = "CLIENT-SECRET",
+            ClientId = "68647029085-8mi0ogh6lmrjps2hot385ieuqq55t4uf.apps.googleusercontent.com",
+            ClientSecret = "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",
             Scope = "openid profile email",
             RedirectUri = "http://127.0.0.1:7890/",
             Browser = new SystemBrowser(7890),
