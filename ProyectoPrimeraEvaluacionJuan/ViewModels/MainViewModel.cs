@@ -10,6 +10,7 @@ namespace ProyectoPrimeraEvaluacionJuan.ViewModels;
 public partial class MainViewModel : ViewModelBase
 {
     [ObservableProperty] private string _greeting = "Welcome to Avalonia!";
+    [ObservableProperty] private bool isLogueado = false;
     [ObservableProperty] private string imageUrl;
     [ObservableProperty] private AvaloniaList<Usuario> listaUsuarios=new();
     [ObservableProperty]
@@ -31,6 +32,7 @@ public partial class MainViewModel : ViewModelBase
     {
         var authservice = new GoogleAuthService();
         await authservice.LoginAsync(user);
+        IsLogueado = true;
     }
     
     [RelayCommand]
@@ -39,5 +41,6 @@ public partial class MainViewModel : ViewModelBase
         var authservice = new GoogleAuthService();
         Usuario usuario = await authservice.LoginAsync(new Usuario());
         ImageUrl = usuario.ImageUrl;
+        IsLogueado = true;
     }
 }

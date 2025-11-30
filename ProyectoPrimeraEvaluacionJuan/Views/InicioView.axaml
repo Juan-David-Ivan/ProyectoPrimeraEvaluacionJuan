@@ -2,8 +2,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ProyectoPrimeraEvaluacionJuan.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ProyectoPrimeraEvaluacionJuan.Views.InicioView">
-    
+             x:Class="ProyectoPrimeraEvaluacionJuan.Views.InicioView"
+             x:DataType="vm:InicioViewModel">
+    <Design.DataContext>
+        <vm:InicioViewModel />
+    </Design.DataContext>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" Source="avares://ProyectoPrimeraEvaluacionJuan/Assets/fondoInicio2.jpeg">
+                
+            </ImageBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="1" BorderBrush="Goldenrod"
+                Margin="25" BoxShadow="5 5 3 1 SaddleBrown"
+                BorderThickness="2"
+                CornerRadius="5" 
+                Height="300">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        
+            
+                <TextBlock Text="Bienvenido a mi aplicación" FontSize="22" ></TextBlock>
+                <TextBlock Text="para crear y gestionar piroteccnia." FontSize="22"></TextBlock>
+                <TextBlock Text="Ya que se acerca año nuevo, la vas" FontSize="22"></TextBlock>
+                <TextBlock Text="a necesitar mucho..." FontSize="22"></TextBlock>
+            
+                <Button Width="150" HorizontalAlignment="Center" 
+                        Margin="0,50,0,0"
+                        Content="ACCEDER A LA APP"
+                        Background="Goldenrod"
+                        Classes="BotonInicio"
+                        Command="{Binding IrAAltaCommand}"></Button>
+            
+            </StackPanel>
+        </Border>
+        
+    </Grid>
     
 </UserControl>

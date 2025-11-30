@@ -16,36 +16,52 @@
     <vm:MainViewModel />
   </Design.DataContext>
     
-    <StackPanel HorizontalAlignment="Center">
-        <TextBlock Text="Últimos registros"></TextBlock>
-        <ListBox ItemsSource="{Binding ListaUsuarios}" Width="200" Height="200" Name="ListBoxUsuarios">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Image asyncImageLoader:ImageLoader.Source="{Binding ImageUrl}"></Image>
-                        <TextBlock Text="{Binding Nombre}"></TextBlock>
-                        <TextBlock Text="{Binding Email}"></TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Button Content="Login"
-                Command="{Binding LoginUsuarioCommand}"
-                CommandParameter="{Binding ElementName= ListBoxUsuarios, Path=SelectedItem}"></Button>
-        <Button Content="Registrar con Google"
-                Command="{Binding RegisterUserCommand}"></Button>
+    <Grid Background="Black">
         
         <fa:NavigationView PaneDisplayMode="Left" 
                            SelectedItem="{Binding NavigationService.SelectedMenuItem}"
-                           MenuItemsSource="{Binding NavigationService.MenuItems}">
-            <!-- <fa:NavigationView.MenuItems> -->
-            <!--     <fa:NavigationViewItem Content="Inicio" IconSource="Home"/> -->
-            <!--     <fa:NavigationViewItem Content="Productos" IconSource="Shop"/> -->
-            <!-- </fa:NavigationView.MenuItems> -->
-            <ContentControl Content="{Binding NavigationService.CurrentView}"/>
-        </fa:NavigationView>
+                           MenuItemsSource="{Binding NavigationService.MenuItems}"
+                           IsVisible="{Binding IsLogueado}"> <ContentControl Content="{Binding NavigationService.CurrentView}"/>
         
-    </StackPanel>
+        </fa:NavigationView>
+
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    IsVisible="{Binding !IsLogueado}">
+            
+        
+            <TextBlock Text="Últimos registros" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+        
+            <ListBox ItemsSource="{Binding ListaUsuarios}" 
+                     Width="200" Height="200" 
+                     Name="ListBoxUsuarios"
+                     Margin="0,0,0,20">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <Image asyncImageLoader:ImageLoader.Source="{Binding ImageUrl}" Width="30" Height="30"/>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Nombre}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Email}" FontSize="10"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Content="Login"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,0,10"
+                    Command="{Binding LoginUsuarioCommand}"
+                    CommandParameter="{Binding ElementName=ListBoxUsuarios, Path=SelectedItem}"/>
+        
+            <Button Content="Registrar con Google"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding RegisterUserCommand}">
+            </Button>
+        </StackPanel>
+
+    </Grid>
     
     
    
