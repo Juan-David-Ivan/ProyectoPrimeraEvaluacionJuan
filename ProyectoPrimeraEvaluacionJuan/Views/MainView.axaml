@@ -17,12 +17,14 @@
   </Design.DataContext>
     
     <Grid Background="Black">
+        <TextBlock Text="BIENVENIDO A PIROJUAN!" HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Margin="0,30,0,0"
+                   FontSize="36"></TextBlock>
         
         <fa:NavigationView PaneDisplayMode="Left" 
                            SelectedItem="{Binding NavigationService.SelectedMenuItem}"
                            MenuItemsSource="{Binding NavigationService.MenuItems}"
                            IsVisible="{Binding IsLogueado}"> <ContentControl Content="{Binding NavigationService.CurrentView}"/>
-        
         </fa:NavigationView>
 
         <StackPanel HorizontalAlignment="Center" 

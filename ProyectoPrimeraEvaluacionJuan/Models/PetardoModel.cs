@@ -6,7 +6,7 @@ namespace ProyectoPrimeraEvaluacionJuan.Models;
 public class PetardoModel
 {
     [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
-    public string Id { get; set; }
+    public int Id { get; set; }
     
     [JsonProperty("nombre")]
     public string nombre { get; set; }

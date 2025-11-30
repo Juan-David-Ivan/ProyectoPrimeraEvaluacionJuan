@@ -19,82 +19,56 @@
         <Border BorderBrush="Goldenrod"
                 Margin="25" BoxShadow="5 5 3 1 SaddleBrown"
                 BorderThickness="2"
-                CornerRadius="5" 
+                CornerRadius="5"
                 Height="400"
                 Width="400"
                 Background="Blue">
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto,*" 
-              ColumnDefinitions="*,150,200,*"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Center" 
-              Margin="20">
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, *" 
+          ColumnDefinitions="*,150,200,*"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center" 
+          Margin="20">
+                
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Nombre de la pirotecnia:"/>
+        <TextBox Grid.Row="0" Grid.Column="2"
+                 Text="{Binding NuevoPetardo.nombre}"/> <TextBlock Grid.Row="1" Grid.Column="1" Text="Tipo de pirotecnia:"/>
+        <ComboBox Grid.Row="1" Grid.Column="2"
+                  ItemsSource="{Binding ListaTipoPirotecnia}"
+                  SelectedItem="{Binding NuevoPetardo.Tipo}"> </ComboBox>
+        
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Potencia (1-10):"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Spacing="5">
+            <Slider Minimum="1" Maximum="10" Value="{Binding NuevoPetardo.potencia}" Width="150" TickFrequency="1" IsSnapToTickEnabled="True"/>
+            <TextBlock Text="{Binding NuevoPetardo.potencia}"/>
+        </StackPanel>
+        
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Fecha de recogida:"/>
+        <CalendarDatePicker Grid.Row="3" Grid.Column="2" SelectedDate="{Binding NuevoPetardo.fechaRecogida}">
+            <Interaction.Behaviors>
+                <EventTriggerBehavior EventName="SelectedDateChanged">
+                    <InvokeCommandAction Command="{Binding ComprobarFechaCommand}"/>
+                </EventTriggerBehavior>
+            </Interaction.Behaviors>
+        </CalendarDatePicker>
 
-            <TextBlock Grid.Row="0" Grid.Column="1" 
-                       Text="Nombre de la pirotecnia:" 
-                       VerticalAlignment="Center" 
-                       Margin="0, 5, 10, 5"/>
-            <TextBox Grid.Row="0" Grid.Column="2"
-                     Margin="0, 5, 0, 5"
-                     Text="{Binding NuevoPetardo.nombre}"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Indique si es peligroso:"/>
+        <CheckBox Grid.Row="4" Grid.Column="2" IsChecked="{Binding NuevoPetardo.peligroso}"/>
 
-            <TextBlock Grid.Row="1" Grid.Column="1" 
-                       Text="Tipo de pirotecnia:" 
-                       VerticalAlignment="Center" 
-                       Margin="0, 5, 10, 5"/>
-            <ComboBox Grid.Row="1" Grid.Column="2"
-                      Margin="0, 5, 0, 5"
-                      ItemsSource="{Binding ListaTipoPirotecnia }">
-            </ComboBox>
+        <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                Content="Añadir" 
+                Background="DarkGoldenrod"
+                Command="{Binding CrearPirotecniaCommand}" HorizontalAlignment="Stretch"
+                Margin="0, 20, 0, 0"/>
+        
+        <TextBlock Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Mensaje}" 
+                   HorizontalAlignment="Center"
+                   Background="Red"
+                   Margin="0, 10, 0, 0"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="1" 
-                       Text="Potencia (1-10):" 
-                       VerticalAlignment="Center" 
-                       Margin="0, 5, 10, 5"/>
-            <StackPanel Grid.Row="2" Grid.Column="2" 
-                        Orientation="Horizontal" 
-                        VerticalAlignment="Center"
-                        Margin="0, 5, 0, 5">
-                <Slider Minimum="1" Maximum="10" 
-                        Width="200" 
-                        Value="{Binding NuevoPetardo.potencia}"
-                        TickFrequency="1" 
-                        IsSnapToTickEnabled="True"/>
-                <TextBlock Text="{Binding NuevoPetardo.potencia}"/>
-            </StackPanel>
-
-            <TextBlock Grid.Row="3" Grid.Column="1" 
-                       Text="Fecha de recogida:" 
-                       VerticalAlignment="Center" 
-                       Margin="0, 5, 10, 5"/>
-            <CalendarDatePicker Grid.Row="3" Grid.Column="2" Width="200" HorizontalAlignment="Left" Margin="4" SelectedDate="{Binding NuevoPetardo.fechaRecogida}">
-                <Interaction.Behaviors>
-                    <EventTriggerBehavior EventName="SelectedDateChanged">
-                        <InvokeCommandAction Command="{Binding ComprobarFechaCommand}"/>
-                    </EventTriggerBehavior>
-                </Interaction.Behaviors>
-            </CalendarDatePicker>
-
-            <TextBlock Grid.Row="4" Grid.Column="1" 
-                       Text="Indique si es peligroso:" 
-                       VerticalAlignment="Center" 
-                       Margin="0, 5, 10, 5"/>
-            <CheckBox Grid.Row="4" Grid.Column="2" 
-                      VerticalAlignment="Center" 
-                      IsChecked="{Binding NuevoPetardo.peligroso}"
-                      Margin="0, 5, 0, 5"/>
-
-            <Button Grid.Row="5"  Grid.Column="1" Grid.ColumnSpan="2"
-                    Content="Añadir." 
-                    Command="{Binding CrearPirotecnia}"
-                    HorizontalAlignment="Stretch"
-                    Margin="0, 20, 0, 0"/>
-            
-        </Grid>
-    </Border>
-        <TextBlock Text="{Binding Mensaje}" HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
-                   Background="Red"></TextBlock>
     </Grid>
+        </Border>
+    </Grid>
+    
     
     
 </UserControl>

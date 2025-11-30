@@ -23,7 +23,7 @@ public class APIService
     public async Task CrearPetardo(PetardoModel petardo)
     {
         var jsonProduct = JsonConvert.SerializeObject(petardo);
-        var request = new HttpRequestMessage(HttpMethod.Post, "rest/v1/petardo")
+        var request = new HttpRequestMessage(HttpMethod.Post, "rest/v1/petardos")
         {
             Content = new StringContent(jsonProduct, Encoding.UTF8, "application/json")
         };
@@ -32,7 +32,7 @@ public class APIService
 
     public async Task<bool> EliminarPetardo(PetardoModel p)
     {
-        var request = new HttpRequestMessage(HttpMethod.Delete, "rest/v1/petardo?id=eq." + p.Id);
+        var request = new HttpRequestMessage(HttpMethod.Delete, "rest/v1/petardos?id=eq." + p.Id);
         request.Headers.Add("Prefer", "return=representation");
         var response = await client.SendAsync(request);
         if (!response.IsSuccessStatusCode)
@@ -51,7 +51,7 @@ public class APIService
     public async Task<bool> ModificarPetardo(PetardoModel petardo)
     {
         var jsonProduct = JsonConvert.SerializeObject(petardo);
-        var request = new HttpRequestMessage(HttpMethod.Patch, "rest/v1/producto_ejemplo?id=eq."+petardo.Id)
+        var request = new HttpRequestMessage(HttpMethod.Patch, "rest/v1/petardos?id=eq."+petardo.Id)
         {
             Content = new StringContent(jsonProduct, Encoding.UTF8, "application/json")
         };
@@ -74,7 +74,7 @@ public class APIService
 
     public async Task<AvaloniaList<PetardoModel>> ObtenerPetardos()
     {
-        var request = new HttpRequestMessage(HttpMethod.Get, "rest/v1/petardo");
+        var request = new HttpRequestMessage(HttpMethod.Get, "rest/v1/petardos");
         var response = await client.SendAsync(request);
         var listaString = await response.Content.ReadAsStringAsync();
         return JsonConvert.DeserializeObject<AvaloniaList<PetardoModel>>(listaString);
